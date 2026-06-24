@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/theme/theme';
 import { CssBaseline } from '@mui/material';
+import ReduxProvider from '@/providers/ReduxProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,10 +33,12 @@ export default function RootLayout({
     >
       <body>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
+          <ReduxProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              {children}
+            </ThemeProvider>
+          </ReduxProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
