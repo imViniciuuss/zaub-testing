@@ -43,7 +43,20 @@ export default function OrdersPage() {
           {orders.map((order) => {
             const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
             return (
-              <Paper key={order.id} variant="outlined" sx={{ p: 2 }}>
+              <Paper
+                key={order.id}
+                component={Link}
+                href={`/orders/${order.id}`}
+                variant="outlined"
+                sx={{
+                  p: 2,
+                  display: 'block',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'box-shadow 0.2s',
+                  '&:hover': { boxShadow: 2 },
+                }}
+              >
                 <Stack
                   direction={{ xs: 'column', sm: 'row' }}
                   sx={{ justifyContent: 'space-between', gap: 1 }}
