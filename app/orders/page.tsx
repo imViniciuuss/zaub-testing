@@ -53,6 +53,7 @@ export default function OrdersPage() {
                   display: 'block',
                   textDecoration: 'none',
                   color: 'inherit',
+                  bgcolor: 'background.paper',
                   transition: 'box-shadow 0.2s',
                   '&:hover': { boxShadow: 2 },
                 }}

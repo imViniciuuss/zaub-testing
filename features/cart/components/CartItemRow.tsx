@@ -32,20 +32,27 @@ export function CartItemRow({
   const lineSubtotal = getCartItemSubtotal(item);
 
   return (
-    <Stack direction="row" sx={{ spacing: 1.5, alignItems: 'flex-start' }}>
+    <Stack direction="row" spacing={1.5} sx={{ alignItems: 'flex-start' }}>
       <Box
-        component="img"
-        src={item.thumbnail}
-        alt={item.title}
         sx={{
           width: compact ? 72 : 96,
           height: compact ? 72 : 96,
-          objectFit: 'contain',
-          bgcolor: itemSurfaceBg,
-          borderRadius: 1,
           flexShrink: 0,
+          borderRadius: 1,
+          bgcolor: itemSurfaceBg,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          p: 0.5,
         }}
-      />
+      >
+        <Box
+          component="img"
+          src={item.thumbnail}
+          alt={item.title}
+          sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
+      </Box>
       <Box sx={{ flex: 1, minWidth: 0 }}>
         <Stack
           direction="row"

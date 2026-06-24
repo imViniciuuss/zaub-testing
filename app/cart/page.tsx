@@ -32,7 +32,7 @@ export default function CartPage() {
         Carrinho
       </Typography>
 
-      <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
+      <Paper variant="outlined" sx={{ p: 2, mb: 3, bgcolor: 'background.paper' }}>
         <Stack spacing={3} divider={<Divider />}>
           {items.map((item) => (
             <CartItemRow
@@ -46,7 +46,7 @@ export default function CartPage() {
         </Stack>
       </Paper>
 
-      <Paper variant="outlined" sx={{ p: 3 }}>
+      <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
         <Stack spacing={2}>
           <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="h6">Total do carrinho</Typography>

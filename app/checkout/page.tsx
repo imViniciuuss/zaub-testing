@@ -25,7 +25,7 @@ export default function CheckoutPage() {
             <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
                 Finalizar pedido
             </Typography>
-            <Paper variant="outlined" sx={{ p: 3, mb: 3 }}>
+            <Paper variant="outlined" sx={{ p: 3, mb: 3, bgcolor: 'background.paper' }}>
                 <Typography variant="h6" gutterBottom>
                     Resumo
                 </Typography>
@@ -55,7 +55,7 @@ export default function CheckoutPage() {
                     </Typography>
                 </Stack>
             </Paper>
-            <Paper variant="outlined" sx={{ p: 3 }}>
+            <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
                 <CheckoutForm />
             </Paper>
             <Button component={Link} href="/cart" sx={{ mt: 2 }}>

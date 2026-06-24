@@ -31,17 +31,25 @@ export function OrderDetail({ order }: OrderDetailProps) {
         {order.items.map((item) => (
           <Stack key={item.productId} direction="row" spacing={2}>
             <Box
-              component="img"
-              src={item.thumbnail}
-              alt={item.title}
               sx={{
                 width: 72,
                 height: 72,
-                objectFit: 'contain',
-                bgcolor: itemSurfaceBg,
+                flexShrink: 0,
                 borderRadius: 1,
+                bgcolor: itemSurfaceBg,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: 0.5,
               }}
-            />
+            >
+              <Box
+                component="img"
+                src={item.thumbnail}
+                alt={item.title}
+                sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            </Box>
             <Box sx={{ flex: 1 }}>
               <Stack direction="row" sx={{ justifyContent: 'space-between', gap: 1 }}>
                 <Typography sx={{ fontWeight: 600 }}>{item.title}</Typography>

@@ -25,8 +25,25 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
   const { items, subtotal, incrementItem, decrementItem, removeFromCart } = useCart();
 
   return (
-    <Drawer anchor="right" open={isOpen} onClose={onClose}>
-      <Box sx={{ width: { xs: 320, sm: 400 }, display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <Drawer
+      anchor="right"
+      open={isOpen}
+      onClose={onClose}
+      slotProps={{
+        paper: {
+          sx: { bgcolor: 'background.paper' },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          width: { xs: 320, sm: 400 },
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          bgcolor: 'background.paper',
+        }}
+      >
         <Stack
           direction="row"
           sx={{ alignItems: 'center', justifyContent: 'space-between', px: 2, py: 2 }}

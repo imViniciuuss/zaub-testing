@@ -33,7 +33,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body>
+      <body className="h-full">
         <InitColorSchemeScript
           attribute="class"
           defaultMode="system"
