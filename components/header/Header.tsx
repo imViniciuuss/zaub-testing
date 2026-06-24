@@ -12,6 +12,9 @@ export default function Header() {
   const { totalItems } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  const cartAriaLabel =
+    totalItems > 0 ? `Cart, ${totalItems} items` : 'Cart, empty';
+
   return (
     <>
       <Box
@@ -26,6 +29,8 @@ export default function Header() {
         }}
       >
         <Box
+          component="nav"
+          aria-label="Main navigation"
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -36,23 +41,34 @@ export default function Header() {
             py: 2,
           }}
         >
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <Typography sx={{ fontSize: '1.125rem', fontWeight: 700, color: 'text.primary' }}>
-              Zaub Store
-            </Typography>
-          </Link>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <Typography sx={{ fontSize: '1.125rem', fontWeight: 700, color: 'text.primary' }}>
+                Zaub Store
+              </Typography>
+            </Link>
+            <Button
+              component={Link}
+              href="/orders"
+              sx={{ textTransform: 'none', fontWeight: 500 }}
+            >
+              Orders
+            </Button>
+          </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <ThemeToggle />
             <Button
               variant="outlined"
               onClick={() => setIsCartOpen(true)}
+              aria-label={cartAriaLabel}
               sx={{ textTransform: 'none', fontWeight: 500, gap: 1, borderRadius: 1, px: 1.5, py: 1 }}
             >
-              <ShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
+              <ShoppingCartOutlinedIcon sx={{ fontSize: 18 }} aria-hidden />
               Cart
               {totalItems > 0 && (
                 <Box
                   component="span"
+                  aria-hidden
                   sx={{
                     display: 'inline-flex',
                     alignItems: 'center',

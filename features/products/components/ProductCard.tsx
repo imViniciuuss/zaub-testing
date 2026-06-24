@@ -64,7 +64,13 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         </Stack>
 
         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
-          <Rating value={product.rating} precision={0.1} size="small" readOnly />
+          <Rating
+            value={product.rating}
+            precision={0.1}
+            size="small"
+            readOnly
+            getLabelText={(value) => `${value} out of 5 stars`}
+          />
           <Typography variant="body2" color="text.secondary">
             ({product.rating.toFixed(2)})
           </Typography>
@@ -95,6 +101,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             size="small"
             startIcon={<ShoppingCartOutlinedIcon />}
             onClick={() => onAddToCart?.(product)}
+            aria-label={`Add ${product.title} to cart`}
           >
             Add to cart
           </Button>

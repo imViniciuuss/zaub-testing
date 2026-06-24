@@ -39,15 +39,17 @@ export default function OrdersPage() {
           </Stack>
         </>
       ) : (
-        <Stack spacing={2}>
+        <Stack component="ul" spacing={2} sx={{ listStyle: 'none', p: 0, m: 0 }}>
           {orders.map((order) => {
             const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
+            const orderLabel = `Order ${order.id.slice(0, 8)}, ${formatDate(order.createdAt)}, ${itemCount} items, total ${formatCurrency(order.total)}`;
             return (
-              <Paper
-                key={order.id}
+              <Box component="li" key={order.id}>
+                <Paper
                 component={Link}
                 href={`/orders/${order.id}`}
                 variant="outlined"
+                aria-label={orderLabel}
                 sx={{
                   p: 2,
                   display: 'block',
@@ -74,7 +76,8 @@ export default function OrdersPage() {
                     {formatCurrency(order.total)}
                   </Typography>
                 </Stack>
-              </Paper>
+                </Paper>
+              </Box>
             );
           })}
         </Stack>

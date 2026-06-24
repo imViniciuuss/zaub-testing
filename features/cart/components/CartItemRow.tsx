@@ -70,14 +70,27 @@ export function CartItemRow({
           {formatCurrency(item.price)} × {item.quantity}
         </Typography>
 
-        <Stack direction="row" sx={{ alignItems: 'center', mt: 1 }}>
-          <IconButton size="small" onClick={() => onDecrement(item.productId)} aria-label="Decrease quantity">
+        <Stack direction="row" sx={{ alignItems: 'center', mt: 1 }} role="group" aria-label={`Quantity for ${item.title}`}>
+          <IconButton
+            size="small"
+            onClick={() => onDecrement(item.productId)}
+            aria-label={`Decrease quantity of ${item.title}`}
+          >
             <RemoveIcon fontSize="small" />
           </IconButton>
-          <Typography variant="body2" sx={{ minWidth: 24, textAlign: 'center' }}>
+          <Typography
+            variant="body2"
+            aria-live="polite"
+            aria-atomic="true"
+            sx={{ minWidth: 24, textAlign: 'center' }}
+          >
             {item.quantity}
           </Typography>
-          <IconButton size="small" onClick={() => onIncrement(item.productId)} aria-label="Increase quantity">
+          <IconButton
+            size="small"
+            onClick={() => onIncrement(item.productId)}
+            aria-label={`Increase quantity of ${item.title}`}
+          >
             <AddIcon fontSize="small" />
           </IconButton>
           <IconButton
@@ -85,7 +98,7 @@ export function CartItemRow({
             color="error"
             onClick={() => onRemove(item.productId)}
             sx={{ ml: 'auto' }}
-            aria-label="Remove item"
+            aria-label={`Remove ${item.title} from cart`}
           >
             <DeleteIcon fontSize="small" />
           </IconButton>

@@ -41,6 +41,7 @@ export function CheckoutForm() {
         <Stack component="form" spacing={2} onSubmit={handleSubmit(onSubmit)}>
             <TextField
                 label="Name"
+                autoComplete="name"
                 {...register('name')}
                 error={!!errors.name}
                 helperText={errors.name?.message}
@@ -48,6 +49,8 @@ export function CheckoutForm() {
             />
             <TextField
                 label="Email"
+                type="email"
+                autoComplete="email"
                 {...register('email')}
                 error={!!errors.email}
                 helperText={errors.email?.message}
@@ -55,6 +58,7 @@ export function CheckoutForm() {
             />
             <TextField
                 label="Address"
+                autoComplete="street-address"
                 {...register('address')}
                 error={!!errors.address}
                 helperText={errors.address?.message}
@@ -62,7 +66,7 @@ export function CheckoutForm() {
                 multiline
                 minRows={2}
             />
-            <Button type="submit" variant="contained" disabled={isSubmitting}>
+            <Button type="submit" variant="contained" disabled={isSubmitting} aria-busy={isSubmitting}>
                 Place order
             </Button>
         </Stack>

@@ -18,6 +18,13 @@ export function PaginationControls({ page, pageCount, onChange }: PaginationCont
           onChange={(_event, value) => onChange(value)}
           color="primary"
           shape="rounded"
+          getItemAriaLabel={(type, pageNumber) => {
+            if (type === 'page') return `Go to page ${pageNumber}`;
+            if (type === 'first') return 'Go to first page';
+            if (type === 'last') return 'Go to last page';
+            if (type === 'next') return 'Go to next page';
+            return 'Go to previous page';
+          }}
         />
       </Box>
     );

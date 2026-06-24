@@ -71,14 +71,15 @@ export function ProductCatalog() {
           <TextField
             fullWidth
             size="small"
-            placeholder="Search products..."
+            id="product-search"
+            label="Search products"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             slotProps={{
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon fontSize="small" />
+                    <SearchIcon fontSize="small" aria-hidden />
                   </InputAdornment>
                 ),
               },
@@ -111,12 +112,17 @@ export function ProductCatalog() {
         <EmptyState message="No products found" />
       ) : (
         <>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             Showing {rangeStart}–{rangeEnd} of {total} products
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
             {products.map((product) => (
-              <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }}>
+              <Grid key={product.id} component="li" size={{ xs: 12, sm: 6, md: 4 }}>
                 <ProductCard product={product} onAddToCart={handleAddToCart} />
               </Grid>
             ))}

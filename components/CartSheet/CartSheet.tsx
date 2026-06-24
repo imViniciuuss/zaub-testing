@@ -29,6 +29,7 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
       anchor="right"
       open={isOpen}
       onClose={onClose}
+      aria-labelledby="cart-drawer-title"
       slotProps={{
         paper: {
           sx: { bgcolor: 'background.paper' },
@@ -48,7 +49,7 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
           direction="row"
           sx={{ alignItems: 'center', justifyContent: 'space-between', px: 2, py: 2 }}
         >
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+          <Typography id="cart-drawer-title" variant="h6" component="h2" sx={{ fontWeight: 700 }}>
             Cart
           </Typography>
           <IconButton onClick={onClose} aria-label="Close cart">
@@ -62,16 +63,22 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
           {items.length === 0 ? (
             <EmptyState message="Your cart is empty." />
           ) : (
-            <Stack spacing={2} divider={<Divider flexItem />}>
+            <Stack
+              component="ul"
+              spacing={2}
+              divider={<Divider flexItem />}
+              sx={{ listStyle: 'none', p: 0, m: 0 }}
+            >
               {items.map((item) => (
-                <CartItemRow
-                  key={item.productId}
-                  item={item}
-                  compact
-                  onIncrement={incrementItem}
-                  onDecrement={decrementItem}
-                  onRemove={removeFromCart}
-                />
+                <Box component="li" key={item.productId}>
+                  <CartItemRow
+                    item={item}
+                    compact
+                    onIncrement={incrementItem}
+                    onDecrement={decrementItem}
+                    onRemove={removeFromCart}
+                  />
+                </Box>
               ))}
             </Stack>
           )}

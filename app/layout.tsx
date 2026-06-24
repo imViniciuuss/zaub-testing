@@ -6,6 +6,8 @@ import "./globals.css";
 import { Inter } from 'next/font/google';
 import { InitColorSchemeScript } from '@mui/material';
 import Header from '@/components/header/Header';
+import { MainContent } from '@/components/MainContent';
+import { SkipLink } from '@/components/SkipLink';
 import ReduxProvider from '@/providers/ReduxProvider';
 import { SnackbarProvider } from '@/providers/SnackbarProvider';
 import ThemeRegistry from '@/providers/ThemeRegistry';
@@ -43,8 +45,9 @@ export default function RootLayout({
           <ReduxProvider>
             <ThemeRegistry>
               <SnackbarProvider>
+                <SkipLink />
                 <Header />
-                {children}
+                <MainContent>{children}</MainContent>
               </SnackbarProvider>
             </ThemeRegistry>
           </ReduxProvider>

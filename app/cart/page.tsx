@@ -33,15 +33,21 @@ export default function CartPage() {
       </Typography>
 
       <Paper variant="outlined" sx={{ p: 2, mb: 3, bgcolor: 'background.paper' }}>
-        <Stack spacing={3} divider={<Divider />}>
+        <Stack
+          component="ul"
+          spacing={3}
+          divider={<Divider />}
+          sx={{ listStyle: 'none', p: 0, m: 0 }}
+        >
           {items.map((item) => (
-            <CartItemRow
-              key={item.productId}
-              item={item}
-              onIncrement={incrementItem}
-              onDecrement={decrementItem}
-              onRemove={removeFromCart}
-            />
+            <Box component="li" key={item.productId}>
+              <CartItemRow
+                item={item}
+                onIncrement={incrementItem}
+                onDecrement={decrementItem}
+                onRemove={removeFromCart}
+              />
+            </Box>
           ))}
         </Stack>
       </Paper>
