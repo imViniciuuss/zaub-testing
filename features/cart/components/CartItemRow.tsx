@@ -12,6 +12,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import type { ICartItem } from '@/types/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
 import { getCartItemSubtotal } from '@/lib/cart';
+import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface CartItemRowProps {
   item: ICartItem;
@@ -40,7 +41,7 @@ export function CartItemRow({
           width: compact ? 72 : 96,
           height: compact ? 72 : 96,
           objectFit: 'contain',
-          bgcolor: 'grey.50',
+          bgcolor: itemSurfaceBg,
           borderRadius: 1,
           flexShrink: 0,
         }}

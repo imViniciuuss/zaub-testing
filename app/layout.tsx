@@ -4,12 +4,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from '@/theme/theme';
-import { CssBaseline } from '@mui/material';
+import { InitColorSchemeScript } from '@mui/material';
 import Header from '@/components/header/Header';
 import ReduxProvider from '@/providers/ReduxProvider';
 import { SnackbarProvider } from '@/providers/SnackbarProvider';
+import ThemeRegistry from '@/providers/ThemeRegistry';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,17 +31,22 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body>
+        <InitColorSchemeScript
+          attribute="class"
+          defaultMode="system"
+          modeStorageKey="zaub-color-mode"
+        />
         <AppRouterCacheProvider>
           <ReduxProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
+            <ThemeRegistry>
               <SnackbarProvider>
                 <Header />
                 {children}
               </SnackbarProvider>
-            </ThemeProvider>
+            </ThemeRegistry>
           </ReduxProvider>
         </AppRouterCacheProvider>
       </body>

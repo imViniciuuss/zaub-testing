@@ -4,6 +4,7 @@ import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
 import type { IOrder } from '@/types/order';
 import { getCartItemSubtotal } from '@/lib/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
+import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface OrderDetailProps {
   order: IOrder;
@@ -18,7 +19,7 @@ function formatDate(iso: string) {
 
 export function OrderDetail({ order }: OrderDetailProps) {
   return (
-    <Paper variant="outlined" sx={{ p: 3 }}>
+    <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
       <Typography variant="body2" color="text.secondary" gutterBottom>
         {formatDate(order.createdAt)}
       </Typography>
@@ -37,7 +38,7 @@ export function OrderDetail({ order }: OrderDetailProps) {
                 width: 72,
                 height: 72,
                 objectFit: 'contain',
-                bgcolor: 'grey.50',
+                bgcolor: itemSurfaceBg,
                 borderRadius: 1,
               }}
             />
