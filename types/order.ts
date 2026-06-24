@@ -1,6 +1,6 @@
 import { ICartItem } from "./cart";
 
-export interface IOrderItem {
+export interface IOrder {
     id: string;
     createdAt: string;
     items: ICartItem[];
