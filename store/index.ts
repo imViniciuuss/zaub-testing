@@ -1,11 +1,15 @@
+import { cartReducer } from '@/features/cart/cartSlice';
+import { productsApi } from '@/features/products/productsApi';
 import { configureStore } from '@reduxjs/toolkit';
 
-const placeholderReducer = (state: Record<string, never> = {}) => state;
 export const makeStore = () =>
     configureStore({
         reducer: {
-            _placeholder: placeholderReducer,
+            cart: cartReducer,
+            [productsApi.reducerPath]: productsApi.reducer,
         },
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(productsApi.middleware),
     });
 
 export type AppStore = ReturnType<typeof makeStore>;

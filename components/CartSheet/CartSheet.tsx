@@ -1,0 +1,85 @@
+'use client';
+
+import Link from 'next/link';
+import {
+  Box,
+  Button,
+  Divider,
+  Drawer,
+  IconButton,
+  Stack,
+  Typography,
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { CartItemRow } from '@/features/cart/components/CartItemRow';
+import { EmptyState } from '@/components/feedback/EmptyState';
+import { useCart } from '@/hooks/useCart';
+import { formatCurrency } from '@/lib/formatCurrency';
+
+interface CartSheetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
+  const { items, subtotal, incrementItem, decrementItem, removeFromCart } = useCart();
+
+  return (
+    <Drawer anchor="right" open={isOpen} onClose={onClose}>
+      <Box sx={{ width: { xs: 320, sm: 400 }, display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <Stack
+          direction="row"
+          sx={{ alignItems: 'center', justifyContent: 'space-between', px: 2, py: 2 }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            Carrinho
+          </Typography>
+          <IconButton onClick={onClose} aria-label="Fechar carrinho">
+            <CloseIcon />
+          </IconButton>
+        </Stack>
+
+        <Divider />
+
+        <Box sx={{ flex: 1, overflowY: 'auto', p: 2 }}>
+          {items.length === 0 ? (
+            <EmptyState message="Seu carrinho está vazio." />
+          ) : (
+            <Stack spacing={2} divider={<Divider flexItem />}>
+              {items.map((item) => (
+                <CartItemRow
+                  key={item.productId}
+                  item={item}
+                  compact
+                  onIncrement={incrementItem}
+                  onDecrement={decrementItem}
+                  onRemove={removeFromCart}
+                />
+              ))}
+            </Stack>
+          )}
+        </Box>
+
+        {items.length > 0 && (
+          <>
+            <Divider />
+            <Stack spacing={2} sx={{ p: 2 }}>
+              <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
+                <Typography variant="subtitle1">Total do carrinho</Typography>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  {formatCurrency(subtotal)}
+                </Typography>
+              </Stack>
+              <Button component={Link} href="/cart" variant="outlined" fullWidth onClick={onClose}>
+                Ver carrinho
+              </Button>
+              <Button component={Link} href="/checkout" variant="contained" fullWidth onClick={onClose}>
+                Finalizar pedido
+              </Button>
+            </Stack>
+          </>
+        )}
+      </Box>
+    </Drawer>
+  );
+}
