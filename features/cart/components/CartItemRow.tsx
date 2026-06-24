@@ -71,13 +71,13 @@ export function CartItemRow({
         </Typography>
 
         <Stack direction="row" sx={{ alignItems: 'center', mt: 1 }}>
-          <IconButton size="small" onClick={() => onDecrement(item.productId)} aria-label="Diminuir quantidade">
+          <IconButton size="small" onClick={() => onDecrement(item.productId)} aria-label="Decrease quantity">
             <RemoveIcon fontSize="small" />
           </IconButton>
           <Typography variant="body2" sx={{ minWidth: 24, textAlign: 'center' }}>
             {item.quantity}
           </Typography>
-          <IconButton size="small" onClick={() => onIncrement(item.productId)} aria-label="Aumentar quantidade">
+          <IconButton size="small" onClick={() => onIncrement(item.productId)} aria-label="Increase quantity">
             <AddIcon fontSize="small" />
           </IconButton>
           <IconButton
@@ -85,7 +85,7 @@ export function CartItemRow({
             color="error"
             onClick={() => onRemove(item.productId)}
             sx={{ ml: 'auto' }}
-            aria-label="Remover item"
+            aria-label="Remove item"
           >
             <DeleteIcon fontSize="small" />
           </IconButton>

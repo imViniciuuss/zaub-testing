@@ -10,7 +10,7 @@ import { useAppSelector } from '@/store/hooks';
 import { Box, Button, Container, Paper, Stack, Typography } from '@mui/material';
 
 function formatDate(iso: string) {
-  return new Intl.DateTimeFormat('pt-BR', {
+  return new Intl.DateTimeFormat('en-US', {
     dateStyle: 'short',
     timeStyle: 'short',
   }).format(new Date(iso));
@@ -27,14 +27,14 @@ export default function OrdersPage() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-        Histórico de pedidos
+        Order history
       </Typography>
       {orders.length === 0 ? (
         <>
-          <EmptyState message="Nenhum pedido finalizado ainda." />
+          <EmptyState message="No completed orders yet." />
           <Stack sx={{ mt: 3 }}>
             <Button component={Link} href="/" variant="contained">
-              Ver catálogo
+              View catalog
             </Button>
           </Stack>
         </>
@@ -64,10 +64,10 @@ export default function OrdersPage() {
                 >
                   <Box>
                     <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                      Pedido #{order.id.slice(0, 8)}
+                      Order #{order.id.slice(0, 8)}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {formatDate(order.createdAt)} · {itemCount} itens
+                      {formatDate(order.createdAt)} · {itemCount} items
                     </Typography>
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 700 }}>

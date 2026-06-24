@@ -2,7 +2,7 @@
 
 import { Typography } from '@mui/material';
 
-export function EmptyState({ message = 'Nenhum item encontrado.' }) {
+export function EmptyState({ message = 'No items found.' }) {
   return (
     <Typography color="text.secondary" align="center" sx={{ py: 4 }}>
       {message}

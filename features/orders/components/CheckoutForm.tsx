@@ -28,33 +28,33 @@ export function CheckoutForm() {
 
     const onSubmit = (data: CheckoutFormData) => {
         if (items.length === 0) {
-            showSnackbar('Seu carrinho está vazio', 'error');
+            showSnackbar('Your cart is empty', 'error');
             return;
         }
         dispatch(placeOrder({ items, total: subtotal }));
         dispatch(clearCart());
-        showSnackbar('Pedido finalizado com sucesso!');
+        showSnackbar('Order placed successfully!');
         router.push('/orders');
     };
 
     return (
         <Stack component="form" spacing={2} onSubmit={handleSubmit(onSubmit)}>
             <TextField
-                label="Nome"
+                label="Name"
                 {...register('name')}
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 fullWidth
             />
             <TextField
-                label="E-mail"
+                label="Email"
                 {...register('email')}
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 fullWidth
             />
             <TextField
-                label="Endereço"
+                label="Address"
                 {...register('address')}
                 error={!!errors.address}
                 helperText={errors.address?.message}
@@ -63,7 +63,7 @@ export function CheckoutForm() {
                 minRows={2}
             />
             <Button type="submit" variant="contained" disabled={isSubmitting}>
-                Confirmar pedido
+                Place order
             </Button>
         </Stack>
     );

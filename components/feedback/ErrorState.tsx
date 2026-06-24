@@ -8,7 +8,7 @@ interface ErrorStateProps {
 }
 
 export function ErrorState({
-  message = 'Não foi possível carregar os dados.',
+  message = 'Could not load data.',
   onRetry,
   ...stackProps
 }: ErrorStateProps & StackProps) {
@@ -17,7 +17,7 @@ export function ErrorState({
       <Alert severity="error">{message}</Alert>
       {onRetry && (
         <Button variant="outlined" onClick={onRetry}>
-          Tentar novamente
+          Try again
         </Button>
       )}
     </Stack>

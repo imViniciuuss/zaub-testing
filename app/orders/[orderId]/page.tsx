@@ -26,10 +26,10 @@ export default function OrderDetailPage() {
   if (!order) {
     return (
       <Container maxWidth="md" sx={{ py: 4 }}>
-        <EmptyState message="Pedido não encontrado." />
+        <EmptyState message="Order not found." />
         <Stack sx={{ mt: 3 }}>
           <Button component={Link} href="/orders" variant="contained">
-            Voltar ao histórico
+            Back to history
           </Button>
         </Stack>
       </Container>
@@ -39,11 +39,11 @@ export default function OrderDetailPage() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-        Detalhe do pedido
+        Order details
       </Typography>
       <OrderDetail order={order} />
       <Button component={Link} href="/orders" sx={{ mt: 2 }}>
-        Voltar ao histórico
+        Back to history
       </Button>
     </Container>
   );

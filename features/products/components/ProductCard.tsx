@@ -96,7 +96,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             startIcon={<ShoppingCartOutlinedIcon />}
             onClick={() => onAddToCart?.(product)}
           >
-            Adicionar
+            Add to cart
           </Button>
         </Stack>
       </CardContent>

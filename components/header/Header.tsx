@@ -49,7 +49,7 @@ export default function Header() {
               sx={{ textTransform: 'none', fontWeight: 500, gap: 1, borderRadius: 1, px: 1.5, py: 1 }}
             >
               <ShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
-              Carrinho
+              Cart
               {totalItems > 0 && (
                 <Box
                   component="span"

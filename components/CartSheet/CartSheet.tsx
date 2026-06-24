@@ -49,9 +49,9 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
           sx={{ alignItems: 'center', justifyContent: 'space-between', px: 2, py: 2 }}
         >
           <Typography variant="h6" sx={{ fontWeight: 700 }}>
-            Carrinho
+            Cart
           </Typography>
-          <IconButton onClick={onClose} aria-label="Fechar carrinho">
+          <IconButton onClick={onClose} aria-label="Close cart">
             <CloseIcon />
           </IconButton>
         </Stack>
@@ -60,7 +60,7 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
 
         <Box sx={{ flex: 1, overflowY: 'auto', p: 2 }}>
           {items.length === 0 ? (
-            <EmptyState message="Seu carrinho está vazio." />
+            <EmptyState message="Your cart is empty." />
           ) : (
             <Stack spacing={2} divider={<Divider flexItem />}>
               {items.map((item) => (
@@ -82,16 +82,16 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
             <Divider />
             <Stack spacing={2} sx={{ p: 2 }}>
               <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="subtitle1">Total do carrinho</Typography>
+                <Typography variant="subtitle1">Cart total</Typography>
                 <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
                   {formatCurrency(subtotal)}
                 </Typography>
               </Stack>
               <Button component={Link} href="/cart" variant="outlined" fullWidth onClick={onClose}>
-                Ver carrinho
+                View cart
               </Button>
               <Button component={Link} href="/checkout" variant="contained" fullWidth onClick={onClose}>
-                Finalizar pedido
+                Checkout
               </Button>
             </Stack>
           </>

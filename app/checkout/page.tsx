@@ -23,11 +23,11 @@ export default function CheckoutPage() {
     return (
         <Container maxWidth="md" sx={{ py: 4 }}>
             <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-                Finalizar pedido
+                Checkout
             </Typography>
             <Paper variant="outlined" sx={{ p: 3, mb: 3, bgcolor: 'background.paper' }}>
                 <Typography variant="h6" gutterBottom>
-                    Resumo
+                    Summary
                 </Typography>
                 <Stack spacing={1}>
                     {items.map((item) => (
@@ -59,7 +59,7 @@ export default function CheckoutPage() {
                 <CheckoutForm />
             </Paper>
             <Button component={Link} href="/cart" sx={{ mt: 2 }}>
-                Voltar ao carrinho
+                Back to cart
             </Button>
         </Container>
     );

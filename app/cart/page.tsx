@@ -14,12 +14,12 @@ export default function CartPage() {
     return (
       <Container maxWidth="md" sx={{ py: 4 }}>
         <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-          Carrinho
+          Cart
         </Typography>
-        <EmptyState message="Seu carrinho está vazio." />
+        <EmptyState message="Your cart is empty." />
         <Box sx={{ mt: 3, textAlign: 'center' }}>
           <Button component={Link} href="/" variant="contained">
-            Ver catálogo
+            View catalog
           </Button>
         </Box>
       </Container>
@@ -29,7 +29,7 @@ export default function CartPage() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-        Carrinho
+        Cart
       </Typography>
 
       <Paper variant="outlined" sx={{ p: 2, mb: 3, bgcolor: 'background.paper' }}>
@@ -49,17 +49,17 @@ export default function CartPage() {
       <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
         <Stack spacing={2}>
           <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h6">Total do carrinho</Typography>
+            <Typography variant="h6">Cart total</Typography>
             <Typography variant="h5" sx={{ fontWeight: 700 }}>
               {formatCurrency(subtotal)}
             </Typography>
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
             <Button component={Link} href="/" variant="outlined" fullWidth>
-              Continuar comprando
+              Continue shopping
             </Button>
             <Button component={Link} href="/checkout" variant="contained" fullWidth>
-              Finalizar pedido
+              Checkout
             </Button>
           </Stack>
         </Stack>

@@ -48,7 +48,7 @@ export function ProductCatalog() {
 
   const handleAddToCart = (product: IProduct) => {
     addToCart(product);
-    showSnackbar(`${product.title} adicionado ao carrinho`);
+    showSnackbar(`${product.title} added to cart`);
   };
 
   return (
@@ -60,10 +60,10 @@ export function ProductCatalog() {
       >
         <Box>
           <Typography variant="h4" gutterBottom sx={{ fontWeight: 700 }}>
-            Catálogo de Produtos
+            Product Catalog
           </Typography>
           <Typography color="text.secondary">
-            Descubra nossa coleção selecionada de produtos de qualidade
+            Discover our curated collection of quality products
           </Typography>
         </Box>
 
@@ -71,7 +71,7 @@ export function ProductCatalog() {
           <TextField
             fullWidth
             size="small"
-            placeholder="Buscar produtos..."
+            placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             slotProps={{
@@ -85,14 +85,14 @@ export function ProductCatalog() {
             }}
           />
           <FormControl size="small" sx={{ minWidth: 180 }}>
-            <InputLabel id="category-filter-label">Categoria</InputLabel>
+            <InputLabel id="category-filter-label">Category</InputLabel>
             <Select
               labelId="category-filter-label"
-              label="Categoria"
+              label="Category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <MenuItem value={ALL_CATEGORIES}>Todas as categorias</MenuItem>
+              <MenuItem value={ALL_CATEGORIES}>All categories</MenuItem>
               {categories.map((item) => (
                 <MenuItem key={item.slug} value={item.slug} sx={{ textTransform: 'capitalize' }}>
                   {item.name}
@@ -108,11 +108,11 @@ export function ProductCatalog() {
       ) : isError ? (
         <ErrorState onRetry={refetch} />
       ) : products.length === 0 ? (
-        <EmptyState message="Nenhum produto encontrado" />
+        <EmptyState message="No products found" />
       ) : (
         <>
           <Typography variant="body2" color="text.secondary">
-            Mostrando {rangeStart}–{rangeEnd} de {total} produtos
+            Showing {rangeStart}–{rangeEnd} of {total} products
           </Typography>
           <Grid container spacing={2}>
             {products.map((product) => (

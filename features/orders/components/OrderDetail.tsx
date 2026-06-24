@@ -11,7 +11,7 @@ interface OrderDetailProps {
 }
 
 function formatDate(iso: string) {
-  return new Intl.DateTimeFormat('pt-BR', {
+  return new Intl.DateTimeFormat('en-US', {
     dateStyle: 'long',
     timeStyle: 'short',
   }).format(new Date(iso));
@@ -24,7 +24,7 @@ export function OrderDetail({ order }: OrderDetailProps) {
         {formatDate(order.createdAt)}
       </Typography>
       <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-        Pedido #{order.id.slice(0, 8)}
+        Order #{order.id.slice(0, 8)}
       </Typography>
 
       <Stack spacing={2} divider={<Divider />}>
