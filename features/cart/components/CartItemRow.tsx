@@ -12,6 +12,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import type { ICartItem } from '@/types/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
 import { getCartItemSubtotal } from '@/lib/cart';
+import { truncateSx } from '@/lib/layout';
 import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface CartItemRowProps {
@@ -55,13 +56,19 @@ export function CartItemRow({
       </Box>
       <Box sx={{ flex: 1, minWidth: 0 }}>
         <Stack
-          direction="row"
-          sx={{ justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}
+          direction={{ xs: 'column', sm: 'row' }}
+          sx={{ justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'flex-start' }, gap: 0.5 }}
         >
-          <Typography variant={compact ? 'subtitle2' : 'subtitle1'} sx={{ fontWeight: 600 }}>
+          <Typography
+            variant={compact ? 'subtitle2' : 'subtitle1'}
+            sx={{ fontWeight: 600, ...truncateSx, width: '100%' }}
+          >
             {item.title}
           </Typography>
-          <Typography variant={compact ? 'subtitle2' : 'subtitle1'} sx={{ fontWeight: 700, flexShrink: 0 }}>
+          <Typography
+            variant={compact ? 'subtitle2' : 'subtitle1'}
+            sx={{ fontWeight: 700, flexShrink: 0 }}
+          >
             {formatCurrency(lineSubtotal)}
           </Typography>
         </Stack>
@@ -70,11 +77,16 @@ export function CartItemRow({
           {formatCurrency(item.price)} × {item.quantity}
         </Typography>
 
-        <Stack direction="row" sx={{ alignItems: 'center', mt: 1 }} role="group" aria-label={`Quantity for ${item.title}`}>
+        <Stack
+          direction="row"
+          sx={{ alignItems: 'center', mt: 1 }}
+          role="group"
+          aria-label={`Quantity for ${item.title}`}
+        >
           <IconButton
-            size="small"
             onClick={() => onDecrement(item.productId)}
             aria-label={`Decrease quantity of ${item.title}`}
+            sx={{ p: { xs: 1.25, sm: 1 } }}
           >
             <RemoveIcon fontSize="small" />
           </IconButton>
@@ -87,17 +99,16 @@ export function CartItemRow({
             {item.quantity}
           </Typography>
           <IconButton
-            size="small"
             onClick={() => onIncrement(item.productId)}
             aria-label={`Increase quantity of ${item.title}`}
+            sx={{ p: { xs: 1.25, sm: 1 } }}
           >
             <AddIcon fontSize="small" />
           </IconButton>
           <IconButton
-            size="small"
             color="error"
             onClick={() => onRemove(item.productId)}
-            sx={{ ml: 'auto' }}
+            sx={{ ml: 'auto', p: { xs: 1.25, sm: 1 } }}
             aria-label={`Remove ${item.title} from cart`}
           >
             <DeleteIcon fontSize="small" />

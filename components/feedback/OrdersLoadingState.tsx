@@ -1,11 +1,12 @@
 'use client';
 
 import { Container, Skeleton, Stack, Typography } from '@mui/material';
+import { pageContainerSx, pageTitleSx } from '@/lib/layout';
 
 export function OrdersLoadingState() {
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+    <Container maxWidth="md" sx={pageContainerSx}>
+      <Typography variant="h4" sx={pageTitleSx}>
         Order history
       </Typography>
       <Stack spacing={2}>

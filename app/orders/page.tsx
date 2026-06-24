@@ -6,6 +6,7 @@ import { OrdersLoadingState } from '@/components/feedback/OrdersLoadingState';
 import { selectAllOrders } from '@/features/orders/ordersSelectors';
 import { useStoreHydration } from '@/hooks/useStoreHydration';
 import { formatCurrency } from '@/lib/formatCurrency';
+import { pageContainerSx, pageTitleSx } from '@/lib/layout';
 import { useAppSelector } from '@/store/hooks';
 import { Box, Button, Container, Paper, Stack, Typography } from '@mui/material';
 
@@ -25,8 +26,8 @@ export default function OrdersPage() {
   }
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+    <Container maxWidth="md" sx={pageContainerSx}>
+      <Typography variant="h4" sx={pageTitleSx}>
         Order history
       </Typography>
       {orders.length === 0 ? (

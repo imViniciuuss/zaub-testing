@@ -22,6 +22,7 @@ import { useSnackbar } from '@/hooks/useSnackbar';
 import { useProductCatalog } from '../hooks/useProductCatalog';
 import { ProductCard } from './ProductCard';
 import type { IProduct } from '@/types/product';
+import { pageTitleSx } from '@/lib/layout';
 
 export function ProductCatalog() {
   const {
@@ -59,24 +60,25 @@ export function ProductCatalog() {
         sx={{ justifyContent: 'space-between', alignItems: { xs: 'stretch', md: 'flex-start' } }}
       >
         <Box>
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700 }}>
+          <Typography variant="h4" sx={{ ...pageTitleSx, mb: { xs: 1, md: 2 } }}>
             Product Catalog
           </Typography>
-          <Typography color="text.secondary">
+          <Typography color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             Discover our curated collection of quality products
           </Typography>
         </Box>
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ minWidth: { md: 420 } }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ width: { md: 420 }, flexShrink: 0 }}>
           <TextField
             fullWidth
             size="small"
             id="product-search"
-            label="Search products"
+            placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             slotProps={{
               input: {
+                'aria-label': 'Search products',
                 startAdornment: (
                   <InputAdornment position="start">
                     <SearchIcon fontSize="small" aria-hidden />
@@ -85,7 +87,7 @@ export function ProductCatalog() {
               },
             }}
           />
-          <FormControl size="small" sx={{ minWidth: 180 }}>
+          <FormControl size="small" fullWidth sx={{ minWidth: { sm: 180 } }}>
             <InputLabel id="category-filter-label">Category</InputLabel>
             <Select
               labelId="category-filter-label"

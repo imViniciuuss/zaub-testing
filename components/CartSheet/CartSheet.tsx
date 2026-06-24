@@ -38,7 +38,7 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
     >
       <Box
         sx={{
-          width: { xs: 320, sm: 400 },
+          width: { xs: 'min(100%, 400px)', sm: 400 },
           display: 'flex',
           flexDirection: 'column',
           height: '100%',

@@ -38,32 +38,44 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         },
       }}
     >
-      <Box sx={{ bgcolor: itemSurfaceBg, p: 2 }}>
+      <Box sx={{ bgcolor: itemSurfaceBg, p: { xs: 1.5, sm: 2 } }}>
         <CardMedia
           component="img"
           image={product.thumbnail}
           alt={product.title}
-          sx={{ height: 160, objectFit: 'contain' }}
+          sx={{ height: { xs: 140, sm: 160 }, objectFit: 'contain' }}
         />
       </Box>
 
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: 1 }}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: 1, p: { xs: 1.5, sm: 2 } }}>
         <Stack
           direction="row"
           spacing={1}
-          sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}
+          sx={{ justifyContent: 'space-between', alignItems: 'flex-start', minWidth: 0 }}
         >
-          <Typography variant="subtitle1" sx={{ fontWeight: 600, lineHeight: 1.3 }}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              fontWeight: 600,
+              lineHeight: 1.3,
+              flex: 1,
+              minWidth: 0,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}
+          >
             {product.title}
           </Typography>
           <Chip
             label={product.category}
             size="small"
-            sx={{ textTransform: 'capitalize', flexShrink: 0 }}
+            sx={{ textTransform: 'capitalize', flexShrink: 0, maxWidth: '40%' }}
           />
         </Stack>
 
-        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
           <Rating
             value={product.rating}
             precision={0.1}
@@ -90,8 +102,9 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         </Typography>
 
         <Stack
-          direction="row"
-          sx={{ mt: 'auto', pt: 1, justifyContent: 'space-between', alignItems: 'center' }}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={1}
+          sx={{ mt: 'auto', pt: 1, justifyContent: 'space-between', alignItems: { xs: 'stretch', md: 'center' } }}
         >
           <Typography variant="h6" sx={{ fontWeight: 700 }}>
             {formatCurrency(product.price)}
@@ -99,9 +112,10 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           <Button
             variant="contained"
             size="small"
-            startIcon={<ShoppingCartOutlinedIcon />}
+            startIcon={<ShoppingCartOutlinedIcon sx={{ display: { xs: 'none', sm: 'inline-flex' } }} />}
             onClick={() => onAddToCart?.(product)}
             aria-label={`Add ${product.title} to cart`}
+            sx={{ whiteSpace: 'nowrap' }}
           >
             Add to cart
           </Button>

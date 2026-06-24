@@ -8,6 +8,7 @@ import { OrderDetail } from '@/features/orders/components/OrderDetail';
 import { selectOrderById } from '@/features/orders/ordersSelectors';
 import { useStoreHydration } from '@/hooks/useStoreHydration';
 import { useAppSelector } from '@/store/hooks';
+import { pageContainerSx, pageTitleSx } from '@/lib/layout';
 
 export default function OrderDetailPage() {
   const params = useParams<{ orderId: string }>();
@@ -16,7 +17,7 @@ export default function OrderDetailPage() {
 
   if (!isHydrated) {
     return (
-      <Container maxWidth="md" sx={{ py: 4 }}>
+      <Container maxWidth="md" sx={pageContainerSx}>
         <Skeleton variant="text" width={240} height={40} />
         <Skeleton variant="rounded" height={300} sx={{ mt: 2 }} />
       </Container>
@@ -25,7 +26,7 @@ export default function OrderDetailPage() {
 
   if (!order) {
     return (
-      <Container maxWidth="md" sx={{ py: 4 }}>
+      <Container maxWidth="md" sx={pageContainerSx}>
         <EmptyState message="Order not found." />
         <Stack sx={{ mt: 3 }}>
           <Button component={Link} href="/orders" variant="contained">
@@ -37,8 +38,8 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+    <Container maxWidth="md" sx={pageContainerSx}>
+      <Typography variant="h4" sx={pageTitleSx}>
         Order details
       </Typography>
       <OrderDetail order={order} />

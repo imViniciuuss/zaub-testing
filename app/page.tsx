@@ -1,10 +1,10 @@
 import { ProductCatalog } from "@/features/products/components/ProductCatalog";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import { pageContainerSx } from "@/lib/layout";
+import { Container } from "@mui/material";
 
 export default function Home() {
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Container maxWidth="xl" sx={pageContainerSx}>
       <ProductCatalog />
     </Container>
   );

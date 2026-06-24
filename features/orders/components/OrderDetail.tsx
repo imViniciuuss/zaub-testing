@@ -4,6 +4,7 @@ import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
 import type { IOrder } from '@/types/order';
 import { getCartItemSubtotal } from '@/lib/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
+import { paperPaddingSx, truncateSx } from '@/lib/layout';
 import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface OrderDetailProps {
@@ -19,7 +20,7 @@ function formatDate(iso: string) {
 
 export function OrderDetail({ order }: OrderDetailProps) {
   return (
-    <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
+    <Paper variant="outlined" sx={{ ...paperPaddingSx, bgcolor: 'background.paper' }}>
       <Typography variant="body2" color="text.secondary" gutterBottom>
         {formatDate(order.createdAt)}
       </Typography>
@@ -32,8 +33,8 @@ export function OrderDetail({ order }: OrderDetailProps) {
           <Stack key={item.productId} direction="row" spacing={2}>
             <Box
               sx={{
-                width: 72,
-                height: 72,
+                width: { xs: 64, sm: 72 },
+                height: { xs: 64, sm: 72 },
                 flexShrink: 0,
                 borderRadius: 1,
                 bgcolor: itemSurfaceBg,
@@ -50,10 +51,15 @@ export function OrderDetail({ order }: OrderDetailProps) {
                 sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
               />
             </Box>
-            <Box sx={{ flex: 1 }}>
-              <Stack direction="row" sx={{ justifyContent: 'space-between', gap: 1 }}>
-                <Typography sx={{ fontWeight: 600 }}>{item.title}</Typography>
-                <Typography sx={{ fontWeight: 700 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                sx={{ justifyContent: 'space-between', gap: 0.5 }}
+              >
+                <Typography sx={{ fontWeight: 600, ...truncateSx }}>
+                  {item.title}
+                </Typography>
+                <Typography sx={{ fontWeight: 700, flexShrink: 0 }}>
                   {formatCurrency(getCartItemSubtotal(item))}
                 </Typography>
               </Stack>

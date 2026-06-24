@@ -6,14 +6,15 @@ import { CartItemRow } from '@/features/cart/components/CartItemRow';
 import { EmptyState } from '@/components/feedback/EmptyState';
 import { useCart } from '@/hooks/useCart';
 import { formatCurrency } from '@/lib/formatCurrency';
+import { pageContainerSx, pageTitleSx } from '@/lib/layout';
 
 export default function CartPage() {
   const { items, subtotal, incrementItem, decrementItem, removeFromCart } = useCart();
 
   if (items.length === 0) {
     return (
-      <Container maxWidth="md" sx={{ py: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+      <Container maxWidth="md" sx={pageContainerSx}>
+        <Typography variant="h4" sx={pageTitleSx}>
           Cart
         </Typography>
         <EmptyState message="Your cart is empty." />
@@ -27,12 +28,12 @@ export default function CartPage() {
   }
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+    <Container maxWidth="md" sx={pageContainerSx}>
+      <Typography variant="h4" sx={pageTitleSx}>
         Cart
       </Typography>
 
-      <Paper variant="outlined" sx={{ p: 2, mb: 3, bgcolor: 'background.paper' }}>
+      <Paper variant="outlined" sx={{ p: { xs: 1.5, sm: 2 }, mb: 3, bgcolor: 'background.paper' }}>
         <Stack
           component="ul"
           spacing={3}
@@ -52,7 +53,7 @@ export default function CartPage() {
         </Stack>
       </Paper>
 
-      <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
+      <Paper variant="outlined" sx={{ p: { xs: 2, md: 3 }, bgcolor: 'background.paper' }}>
         <Stack spacing={2}>
           <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="h6">Cart total</Typography>

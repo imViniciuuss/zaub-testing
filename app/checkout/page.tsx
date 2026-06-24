@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 import { Button, Container, Divider, Paper, Stack, Typography } from '@mui/material';
 import { formatCurrency } from "@/lib/formatCurrency";
+import { pageContainerSx, pageTitleSx, paperPaddingSx, truncateSx } from '@/lib/layout';
 import Link from "next/link";
 import { CheckoutForm } from "@/features/orders/components/CheckoutForm";
 
@@ -21,11 +22,11 @@ export default function CheckoutPage() {
     if (items.length === 0) return null;
 
     return (
-        <Container maxWidth="md" sx={{ py: 4 }}>
-            <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+        <Container maxWidth="md" sx={pageContainerSx}>
+            <Typography variant="h4" sx={pageTitleSx}>
                 Checkout
             </Typography>
-            <Paper variant="outlined" sx={{ p: 3, mb: 3, bgcolor: 'background.paper' }}>
+            <Paper variant="outlined" sx={{ ...paperPaddingSx, mb: 3, bgcolor: 'background.paper' }}>
                 <Typography variant="h6" gutterBottom>
                     Summary
                 </Typography>
@@ -34,12 +35,12 @@ export default function CheckoutPage() {
                         <Stack
                             key={item.productId}
                             direction="row"
-                            sx={{ justifyContent: 'space-between' }}
+                            sx={{ justifyContent: 'space-between', gap: 1 }}
                         >
-                            <Typography variant="body2">
+                            <Typography variant="body2" sx={{ ...truncateSx, flex: 1 }}>
                                 {item.title} × {item.quantity}
                             </Typography>
-                            <Typography variant="body2">
+                            <Typography variant="body2" sx={{ flexShrink: 0 }}>
                                 {formatCurrency(item.price * item.quantity)}
                             </Typography>
                         </Stack>
@@ -55,7 +56,7 @@ export default function CheckoutPage() {
                     </Typography>
                 </Stack>
             </Paper>
-            <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.paper' }}>
+            <Paper variant="outlined" sx={{ ...paperPaddingSx, bgcolor: 'background.paper' }}>
                 <CheckoutForm />
             </Paper>
             <Button component={Link} href="/cart" sx={{ mt: 2 }}>
