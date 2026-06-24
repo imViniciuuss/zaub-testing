@@ -1,13 +1,13 @@
 
 export interface IProduct {
- id: number;
- title: string;
- description: string;
- price: number;
- thumbnail: string;
- category: string;
- stock: number;
- rating: number;
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    thumbnail: string;
+    category: string;
+    stock: number;
+    rating: number;
 }
 
 export interface IProductResponse {
@@ -17,4 +17,10 @@ export interface IProductResponse {
     limit: number;
 }
 
-export interface ICategoriesResponse {}
+export interface ICategory {
+    slug: string;
+    name: string;
+    url: string;
+}
+
+export type ICategoriesResponse = ICategory[];

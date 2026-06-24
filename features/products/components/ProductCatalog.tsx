@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import {
   Box,
   FormControl,
@@ -14,44 +13,43 @@ import {
   Typography,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { PaginationControls } from '@/components/Pagination/PaginationControls';
 import { LoadingState } from '@/components/feedback/LoadingState';
 import { ErrorState } from '@/components/feedback/ErrorState';
 import { EmptyState } from '@/components/feedback/EmptyState';
 import { useCart } from '@/hooks/useCart';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import { useGetProductsQuery } from '../productsApi';
+import { useProductCatalog } from '../hooks/useProductCatalog';
 import { ProductCard } from './ProductCard';
 import type { IProduct } from '@/types/product';
 
-const ALL_CATEGORIES = 'all';
-
 export function ProductCatalog() {
-  const { data, isLoading, isError, refetch } = useGetProductsQuery({ limit: 30 });
+  const {
+    page,
+    setPage,
+    pageCount,
+    search,
+    setSearch,
+    category,
+    setCategory,
+    categories,
+    products,
+    total,
+    rangeStart,
+    rangeEnd,
+    isLoading,
+    isError,
+    refetch,
+    ALL_CATEGORIES,
+  } = useProductCatalog();
+
   const { addToCart } = useCart();
   const { showSnackbar } = useSnackbar();
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState(ALL_CATEGORIES);
 
   const handleAddToCart = (product: IProduct) => {
     addToCart(product);
     showSnackbar(`${product.title} adicionado ao carrinho`);
   };
-
-  const products = useMemo(() => data?.products ?? [], [data]);
-
-  const categories = useMemo(() => {
-    const unique = new Set(products.map((product) => product.category));
-    return Array.from(unique).sort();
-  }, [products]);
-
-  const filteredProducts = useMemo(() => {
-    const term = search.trim().toLowerCase();
-    return products.filter((product) => {
-      const matchesSearch = term === '' || product.title.toLowerCase().includes(term);
-      const matchesCategory = category === ALL_CATEGORIES || product.category === category;
-      return matchesSearch && matchesCategory;
-    });
-  }, [products, search, category]);
 
   return (
     <Stack spacing={3}>
@@ -75,7 +73,7 @@ export function ProductCatalog() {
             size="small"
             placeholder="Buscar produtos..."
             value={search}
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             slotProps={{
               input: {
                 startAdornment: (
@@ -92,12 +90,12 @@ export function ProductCatalog() {
               labelId="category-filter-label"
               label="Categoria"
               value={category}
-              onChange={(event) => setCategory(event.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             >
               <MenuItem value={ALL_CATEGORIES}>Todas as categorias</MenuItem>
               {categories.map((item) => (
-                <MenuItem key={item} value={item} sx={{ textTransform: 'capitalize' }}>
-                  {item}
+                <MenuItem key={item.slug} value={item.slug} sx={{ textTransform: 'capitalize' }}>
+                  {item.name}
                 </MenuItem>
               ))}
             </Select>
@@ -109,20 +107,21 @@ export function ProductCatalog() {
         <LoadingState />
       ) : isError ? (
         <ErrorState onRetry={refetch} />
-      ) : filteredProducts.length === 0 ? (
+      ) : products.length === 0 ? (
         <EmptyState message="Nenhum produto encontrado" />
       ) : (
         <>
           <Typography variant="body2" color="text.secondary">
-            Mostrando {filteredProducts.length} de {products.length} produtos
+            Mostrando {rangeStart}–{rangeEnd} de {total} produtos
           </Typography>
           <Grid container spacing={2}>
-            {filteredProducts.map((product) => (
+            {products.map((product) => (
               <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }}>
                 <ProductCard product={product} onAddToCart={handleAddToCart} />
               </Grid>
             ))}
           </Grid>
+          <PaginationControls page={page} pageCount={pageCount} onChange={setPage} />
         </>
       )}
     </Stack>
