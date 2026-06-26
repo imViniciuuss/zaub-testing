@@ -18,7 +18,7 @@ import { LoadingState } from '@/components/feedback/LoadingState';
 import { ErrorState } from '@/components/feedback/ErrorState';
 import { EmptyState } from '@/components/feedback/EmptyState';
 import { useCart } from '@/hooks/useCart';
-import { useSnackbar } from '@/hooks/useSnackbar';
+import { useSnackbar } from '@/providers/SnackbarProvider';
 import { useProductCatalog } from '../hooks/useProductCatalog';
 import { ProductCard } from './ProductCard';
 import type { IProduct } from '@/types/product';

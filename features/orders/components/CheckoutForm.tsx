@@ -1,7 +1,7 @@
 'use client';
 
 import { useCart } from "@/hooks/useCart";
-import { useSnackbar } from "@/hooks/useSnackbar";
+import { useSnackbar } from '@/providers/SnackbarProvider';
 import { useAppDispatch } from "@/store/hooks";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";

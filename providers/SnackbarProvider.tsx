@@ -42,7 +42,7 @@ export function SnackbarProvider({ children }: { children: React.ReactNode }) {
         open={state.open}
         autoHideDuration={4000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <Alert
           onClose={handleClose}
@@ -57,7 +57,7 @@ export function SnackbarProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useSnackbarContext() {
+export function useSnackbar() {
   const context = useContext(SnackbarContext);
   if (!context) {
     throw new Error('useSnackbar must be used within SnackbarProvider');
