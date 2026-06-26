@@ -13,7 +13,6 @@ import type { ICartItem } from '@/types/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
 import { getCartItemSubtotal } from '@/lib/cart';
 import { truncateSx } from '@/lib/layout';
-import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface CartItemRowProps {
   item: ICartItem;
@@ -40,7 +39,7 @@ export function CartItemRow({
           height: compact ? 72 : 96,
           flexShrink: 0,
           borderRadius: 1,
-          bgcolor: itemSurfaceBg,
+          bgcolor: 'background.muted',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

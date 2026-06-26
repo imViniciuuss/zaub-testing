@@ -14,7 +14,6 @@ import {
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import type { IProduct } from '@/types/product';
 import { formatCurrency } from '@/lib/formatCurrency';
-import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface ProductCardProps {
   product: IProduct;
@@ -38,7 +37,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         },
       }}
     >
-      <Box sx={{ bgcolor: itemSurfaceBg, p: { xs: 1.5, sm: 2 } }}>
+      <Box sx={{ bgcolor: 'background.muted', p: { xs: 1.5, sm: 2 } }}>
         <CardMedia
           component="img"
           image={product.thumbnail}

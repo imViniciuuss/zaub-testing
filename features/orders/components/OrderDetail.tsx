@@ -5,7 +5,6 @@ import type { IOrder } from '@/types/order';
 import { getCartItemSubtotal } from '@/lib/cart';
 import { formatCurrency } from '@/lib/formatCurrency';
 import { paperPaddingSx, truncateSx } from '@/lib/layout';
-import { itemSurfaceBg } from '@/lib/surfaces';
 
 interface OrderDetailProps {
   order: IOrder;
@@ -37,7 +36,7 @@ export function OrderDetail({ order }: OrderDetailProps) {
                 height: { xs: 64, sm: 72 },
                 flexShrink: 0,
                 borderRadius: 1,
-                bgcolor: itemSurfaceBg,
+                bgcolor: 'background.muted',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
