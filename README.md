@@ -164,6 +164,12 @@ Validacao com Zod (`checkoutSchema`) integrada ao React Hook Form via `@hookform
 
 ---
 
+## 🔒 Observacao
+
+Em relação a UI/UX, fiz da forma mais simples possível, seguindo o que foi pedido.
+
+---
+
 ## ✅ Entrega
 
 - Repositorio Git: codigo-fonte disponivel no GitHub
