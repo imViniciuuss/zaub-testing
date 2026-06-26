@@ -6,8 +6,8 @@
 
 | Recurso | URL |
 |---|---|
-| 🌐 Aplicacao em Producao | [zaub-testing](https://zaub-testing.vercel.app/) |
-| 📦 Repositorio GitHub | [zaub-testing](https://github.com/imViniciuuss/zaub-testing) |
+| 🌐 Aplicacao em Producao | [deploy](https://zaub-testing.vercel.app/) |
+| 📦 Repositorio GitHub | [repo](https://github.com/imViniciuuss/zaub-testing) |
 
 ---
 
