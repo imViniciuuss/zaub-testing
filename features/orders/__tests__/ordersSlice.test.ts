@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { ordersReducer, placeOrder, hydrateOrders, ordersAdapter } from './ordersSlice';
+import { ordersReducer, placeOrder, hydrateOrders, ordersAdapter } from '../ordersSlice';
 import type { ICartItem } from '@/types/cart';
 import type { EntityState } from '@reduxjs/toolkit';
 import type { IOrder } from '@/types/order';

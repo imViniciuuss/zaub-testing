@@ -7,7 +7,7 @@ import {
     removeItem,
     clearCart,
     hydrateCart,
-} from './cartSlice';
+} from '../cartSlice';
 import type { ICartState } from '@/types/cart';
 import type { IProduct } from '@/types/product';
 

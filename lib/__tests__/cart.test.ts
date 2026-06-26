@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getCartItemSubtotal } from './cart';
+import { getCartItemSubtotal } from '../cart';
 import type { ICartItem } from '@/types/cart';
 
 const item: ICartItem = {

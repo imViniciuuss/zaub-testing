@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CATALOG_PAGE_SIZE, getSkip, getPageCount } from './catalog';
+import { CATALOG_PAGE_SIZE, getSkip, getPageCount } from '../catalog';
 
 describe('catalog helpers', () => {
   it('getSkip returns correct offset for page', () => {

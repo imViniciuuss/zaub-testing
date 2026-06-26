@@ -6,7 +6,7 @@ import {
     selectCartSubtotal,
     selectCartItemsWithSubtotals,
     selectCartItemSubtotal,
-} from './cartSelectors';
+} from '../cartSelectors';
 import { makeStore, type RootState } from '@/store';
 
 

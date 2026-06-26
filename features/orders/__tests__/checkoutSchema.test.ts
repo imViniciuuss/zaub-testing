@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { checkoutSchema } from './checkoutSchema';
+import { checkoutSchema } from '../checkoutSchema';
 
 const validData = {
   name: 'John Doe',
